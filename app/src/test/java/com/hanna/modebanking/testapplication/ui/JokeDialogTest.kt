@@ -15,7 +15,6 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
@@ -23,14 +22,13 @@ import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
 
 
-@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [Build.VERSION_CODES.P])
 class JokeDialogTest {
 
     lateinit var scenario: FragmentScenario<JokeDialog>
     lateinit var factory: JokeDialogTestFactory
-    private val viewModelMock: JokesViewModel = mock<JokesViewModel> {
+    private val viewModelMock: JokesViewModel = mock {
         onBlocking { getJokeById(4) } doReturn Joke(joke = "This is the joke content")
     }
 
@@ -79,7 +77,6 @@ class JokeDialogTest {
     }
 }
 
-@ExperimentalCoroutinesApi
 class JokeDialogTestFactory constructor(
     var viewModelMock: JokesViewModel
 ) : FragmentFactory() {

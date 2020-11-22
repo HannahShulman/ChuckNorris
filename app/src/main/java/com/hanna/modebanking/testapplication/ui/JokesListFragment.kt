@@ -1,6 +1,7 @@
 package com.hanna.modebanking.testapplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -41,12 +42,14 @@ class JokesListFragment : Fragment(R.layout.fragment_joke_list) {
         binding.jokesList.adapter = jokesListAdapter
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.jokesList().collect { resource ->
+                Log.d("TAG", "onViewCreated: ${resource.data == null}")
                 resource.data?.let { jokeList ->
                     jokesListAdapter.submitList(jokeList)
                     viewStates.setState(ViewStates.State.MAIN)
                 } ?: run {
                     val state = when (resource.status) {
-                        Status.LOADING -> ViewStates.State.LOADING.takeIf { resource.data == null }?:ViewStates.State.MAIN
+                        Status.LOADING -> ViewStates.State.LOADING.takeIf { resource.data == null }
+                            ?: ViewStates.State.MAIN
                         Status.SUCCESS -> ViewStates.State.MAIN
                         Status.ERROR -> ViewStates.State.ERROR
                     }

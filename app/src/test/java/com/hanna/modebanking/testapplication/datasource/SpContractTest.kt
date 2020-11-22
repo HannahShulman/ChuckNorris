@@ -14,7 +14,7 @@ import java.util.*
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [Build.VERSION_CODES.P])
 class SpContractTest {
-    lateinit var spContract: SpContract
+    private lateinit var spContract: SpContract
 
     @Before
     fun reset() {

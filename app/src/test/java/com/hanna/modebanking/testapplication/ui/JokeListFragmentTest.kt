@@ -16,14 +16,12 @@ import com.hanna.modebanking.testapplication.model.Joke
 import com.hanna.modebanking.testapplication.viewmodel.JokesViewModel
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
 
-@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [Build.VERSION_CODES.P])
 class JokeListFragmentTest {
@@ -91,7 +89,6 @@ class JokeListFragmentTest {
     }
 }
 
-@ExperimentalCoroutinesApi
 class JokeListFragmentTestFactory constructor(
     var viewModelMock: JokesViewModel
 ) : FragmentFactory() {

@@ -9,7 +9,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 //This class is marked as opened and should not be so. It should be handled by anotation.
-@ExperimentalCoroutinesApi
 @OpenForTesting
 class JokesViewModel @Inject constructor(private val repository: JokesRepository) :
     ViewModel() {
@@ -18,7 +17,6 @@ class JokesViewModel @Inject constructor(private val repository: JokesRepository
     suspend fun getJokeById(id: Int): Joke = repository.getJokeById(id)
 }
 
-@ExperimentalCoroutinesApi
 class JokesViewModelFactory @Inject constructor(private val repository: JokesRepository) :
     ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
