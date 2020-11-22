@@ -9,7 +9,7 @@ import com.google.gson.Gson
 class CategoriesConverter {
 
     @TypeConverter
-    fun stringToProductArray(value: String): List<String> {
+    fun stringToCategoriesArray(value: String): List<String> {
         val listType = object : TypeToken<List<String>>() {}.type
         return Gson().fromJson(value, listType)
     }

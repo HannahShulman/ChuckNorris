@@ -14,7 +14,7 @@ class CategoriesConverterTest {
 
     @Test
     fun `convert array to string`(){
-        val string = CategoriesConverter().stringToProductArray("[\"JOKE1\",\"JOKE2\"]")
+        val string = CategoriesConverter().stringToCategoriesArray("[\"JOKE1\",\"JOKE2\"]")
         assertThat(string).isEqualTo(listOf("JOKE1", "JOKE2"))
     }
 }
